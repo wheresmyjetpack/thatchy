@@ -2,23 +2,21 @@
   .col-6
     .card
       .card-header
-        Enter a New Book
+        %p.lead Enter a New Book
       .card-block
 
         - unless params.valid?
           .errors
-            %h4 There was a problem with your submission
-            - params.error_messages.each do |msg|
-              %li= msg
+            %em.text-danger There was a problem with your submission
+            %ul
+              - params.error_messages.each do |msg|
+                %li.text-danger= msg
 
-        = form_for :book, routes.books_path, class: 'form' do
-          - div class: 'form-group' do
-            - label :title
-            - text_field :title, class: 'form-control'
+        = render partial: 'form'
 
-          - div class: 'form-group' do
-            - label :author
-            - text_field :author, class: 'form-control'
+.row
+  .col-8.offset-2
+    .card
+      #root
 
-          - div class: 'controls' do
-            - submit 'Create', class: 'btn btn-success'
+= javascript 'test.bundle'

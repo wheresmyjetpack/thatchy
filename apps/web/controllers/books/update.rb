@@ -1,6 +1,9 @@
+require_relative './set_book'
+
 module Web::Controllers::Books
   class Update
     include Web::Action
+    include SetBook
 
     expose :book
 
@@ -17,7 +20,7 @@ module Web::Controllers::Books
 
     def call(params)
       if params.valid?
-        repo.update(params[:id], params[:book])
+        repo.update(book.id, params[:book])
 
         redirect_to routes.books_path
       else

@@ -10,3 +10,7 @@
               %h5= "By #{book.author}"
             .card-footer
               %a.btn.btn-primary{'href' => routes.edit_book_path(book.id)} Edit
+              = destroy_link(book.id)
+    .row
+      .col-2
+        %a.btn.btn-success{'href' => routes.new_book_path} Add Book

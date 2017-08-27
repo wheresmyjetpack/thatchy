@@ -1,7 +1,7 @@
 require_relative './set_book'
 
 module Web::Controllers::Books
-  class Edit
+  class Show
     include Web::Action
     include SetBook
 

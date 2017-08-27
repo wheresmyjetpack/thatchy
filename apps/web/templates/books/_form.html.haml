@@ -1,17 +1,11 @@
-- unless params.valid?
-  .errors
-    %h3 There was a problem with your submission
-    - params.error_messages.each do |msg|
-      %li= msg
-
-= form_for :book, routes.books_path do
-  - div class: 'input' do
+= form_for :book, form_action, class: 'form', **form_opts do
+  - div class: 'form-group' do
     - label :title
-    - text_field :title
+    - text_field :title, class: 'form-control'
 
-  - div class: 'input' do
+  - div class: 'form-group' do
     - label :author
-    - text_field :author
+    - text_field :author, class: 'form-control'
 
-  - div class: 'input' do
-    - submit 'Create'
+  - div class: 'controls' do
+    - submit submit_label, class: 'btn btn-success'
