@@ -1,0 +1,24 @@
+.row
+  .col-6
+    .card
+      .card-header
+        Enter a New Book
+      .card-block
+
+        - unless params.valid?
+          .errors
+            %h4 There was a problem with your submission
+            - params.error_messages.each do |msg|
+              %li= msg
+
+        = form_for :book, routes.books_path, class: 'form' do
+          - div class: 'form-group' do
+            - label :title
+            - text_field :title, class: 'form-control'
+
+          - div class: 'form-group' do
+            - label :author
+            - text_field :author, class: 'form-control'
+
+          - div class: 'controls' do
+            - submit 'Create', class: 'btn btn-success'

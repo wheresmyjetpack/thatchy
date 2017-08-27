@@ -1,0 +1,12 @@
+- if books.any?
+  #books
+    .row
+      - books.each do |book|
+        .book.col-12.col-sm-6.col-md-4
+          .card.mb-4
+            .card-header
+              %h4= book.title
+            .card-block
+              %h5= "By #{book.author}"
+            .card-footer
+              %a.btn.btn-primary{'href' => routes.edit_book_path(book.id)} Edit

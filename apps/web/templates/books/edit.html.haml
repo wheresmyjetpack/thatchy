@@ -1,0 +1,25 @@
+.row
+  .col-6
+    .card
+      .card-header
+        = "Editing "
+        %em= book.title
+      .card-block
+
+        - unless params.valid?
+          .errors
+            %h4 There was a problem with your submission
+            - params.error_messages.each do |msg|
+              %li= msg
+
+        = form_for :book, routes.book_path(book.id), values: {book: book}, method: :patch, class: 'form' do
+          - div class: 'form-group' do
+            - label :title
+            - text_field :title, class: 'form-control'
+
+          - div class: 'form-group' do
+            - label :author
+            - text_field :author, class: 'form-control'
+
+          - div class: 'controls' do
+            - submit 'Update', class: 'btn btn-primary'

@@ -1,0 +1,4 @@
+project=thatchy
+architecture=container
+test=rspec
+template=haml
