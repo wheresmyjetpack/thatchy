@@ -1,0 +1,10 @@
+%nav.navbar.navbar-light.navbar-toggleable-md.navbar-inverse.bg-primary
+  .container
+    .mr-lg-auto
+      %button.navbar-toggler.navbar-toggler-right{type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarNav'}
+        %span.navbar-toggler-icon
+      %a.navbar-brand{href: routes.root_path} Bookshelf
+    %ul.navbar-nav
+      %li.nav-item
+        %a.nav-link{href: routes.books_path} Book List
+
