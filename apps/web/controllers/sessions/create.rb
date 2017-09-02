@@ -3,6 +3,7 @@ module Web::Controllers::Sessions
     include Web::Action
 
     def call(params)
+
     end
   end
 end

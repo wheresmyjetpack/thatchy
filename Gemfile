@@ -8,6 +8,8 @@ gem 'sqlite3'
 
 gem 'haml'
 
+gem 'bcrypt'
+
 group :development do
   gem 'shotgun'
 end

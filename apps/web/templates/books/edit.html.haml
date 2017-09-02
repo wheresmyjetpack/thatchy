@@ -1,5 +1,5 @@
 .row
-  .col-6
+  .col-12.col-sm-8
     .card
       .card-header
         %p.lead
@@ -15,3 +15,10 @@
                 %li.text-danger= msg
 
         = render partial: 'form'
+
+  .col-12.col-sm-4
+    #root
+
+#book-obj{'data-obj' => book.to_h.to_json}
+
+  = javascript "#{ENV['ASSETS_HOST']}/assets/test.bundle"

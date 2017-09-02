@@ -18,7 +18,15 @@ module Web::Controllers
     end
 
     def current_user
-      @current_user ||= UserModel.find(session[:user_id])
+      @current_user ||= UserRepository.new.find(session[:user_id])
+    end
+
+    module Skip
+      private
+
+      def authenticate!
+        # no-op
+      end
     end
   end
 end

@@ -81,11 +81,12 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
+      #middleware.use Rack::Session::Cookie
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
@@ -259,7 +260,7 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
-        # include MyAuthentication # included in all the actions
+        include Web::Controllers::Authentication
         # before :authenticate!    # run an authentication before callback
       end
 
@@ -279,6 +280,15 @@ module Web
     configure :development do
       # Don't handle exceptions, render the stack trace
       handle_exceptions false
+
+      # Relax the content security policy for webpack dev server
+      security.content_security_policy %(
+        script-src 'unsafe-eval' *;
+        connect-src 'self' *;
+        img-src 'self' data: *;
+        style-src 'unsafe-inline' *;
+        font-src 'self' *;
+      )
     end
 
     ##
