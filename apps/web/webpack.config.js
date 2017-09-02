@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry:  {
@@ -6,8 +7,20 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve('../..', 'public/assets')
+    path: path.resolve('../..', 'public/assets'),
+    publicPath: 'http://localhost:8080/assets/'
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.resolve('../../public/assets'),
+    hot: true,
+    allowedHosts: [
+      'localhost'
+    ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     rules: [
       {
